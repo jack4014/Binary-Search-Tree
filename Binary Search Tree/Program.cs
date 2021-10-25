@@ -22,9 +22,9 @@ namespace Binary_Search_Tree
                 int[] arr2 = Array.ConvertAll(file2, int.Parse); //Converts the contents of the second file into an integer array
                 int[] arr3 = Array.ConvertAll(file3, int.Parse); //Converts the contents of the third file into an integer array
 
-                BST tree = new BST(); //Create the binary search tree
-                BST tree2 = new BST();
-                BST tree3 = new BST();
+                BST tree = new BST(); //Create the first binary search tree
+                BST tree2 = new BST(); //Create the second binary search tree
+                BST tree3 = new BST(); //Create the third binary search tree
 
                 for (int i = 0; i < arr.Length; i++) //For loop to insert the first array into the binary search tree
                 {
@@ -49,25 +49,28 @@ namespace Binary_Search_Tree
                 Console.WriteLine("Level order traversal "
                           + "of binary tree is ");
                 tree.printLevelOrder();
-                Console.WriteLine();
+                Console.WriteLine("\nThe Prime numbers of this BST are");
+                tree.inOrderPrimes(tree.root);
+                Console.WriteLine("The height of the tree is {0}", tree.height(tree.root));
+
                 Console.WriteLine("\nThis is the second binary search tree");
                 tree2.inOrder(tree2.root);
                 Console.WriteLine("Level order traversal "
                           + "of binary tree is ");
                 tree2.printLevelOrder();
-                Console.WriteLine();
+                Console.WriteLine("\nThe Prime numbers of this BST are");
+                tree2.inOrderPrimes(tree2.root);
+                Console.WriteLine("The height of the tree is {0}", tree2.height(tree2.root));
+
                 Console.WriteLine("\nThis is the third binary search tree");
                 tree3.inOrder(tree3.root);
                 Console.WriteLine("Level order traversal "
                           + "of binary tree is ");
+
                 tree3.printLevelOrder();
-                Console.WriteLine();
-
-                Console.WriteLine("\nThe height of the tree is {0}", tree.findHeight(tree.root));
-
-                Console.WriteLine("\nThese are the prime numbers in the BST");
-               
-
+                Console.WriteLine("\nThe Prime numbers of this BST are");
+                tree3.inOrderPrimes(tree3.root);
+                Console.WriteLine("\nThe height of the tree is {0}", tree3.height(tree3.root));
 
             }
             catch (FormatException error_1) //Format error handling 
@@ -83,6 +86,8 @@ namespace Binary_Search_Tree
 
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
+
+
         }
     }
 }

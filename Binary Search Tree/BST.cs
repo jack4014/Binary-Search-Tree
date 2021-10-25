@@ -43,7 +43,7 @@ namespace Binary_Search_Tree
             }
             return root;
         }
-        public virtual void printLevelOrder()
+        public virtual void printLevelOrder()  //function to print level order traversal of tree
         {
             int h = height(root);
             int i;
@@ -53,7 +53,7 @@ namespace Binary_Search_Tree
             }
         }
 
-        public virtual int height(Node root)
+        public virtual int height(Node root) //Compute the "height" of a tree from the longest path from the root node down to the farthest leaf node
         {
             if (root == null)
             {
@@ -75,7 +75,7 @@ namespace Binary_Search_Tree
             }
         }
 
-        public virtual void printCurrentLevel(Node root,
+        public virtual void printCurrentLevel(Node root,  //Print nodes at the current level
                                           int level)
         {
             if (root == null)
@@ -103,18 +103,6 @@ namespace Binary_Search_Tree
             }
             return p;
         }
-
-        public int findHeight(Node p) //Method to find the height/depth of the binary search tree
-        {
-            if (p == null)
-            {
-                return 0;
-            }
-            int left = findHeight(p.left);
-            int right = findHeight(p.right);
-            return Math.Max(left, right) + 1;
-        }
-
         public void inOrder(Node p) //Method for reading the binary search tree in order 
         {
             if (p == null) return;
@@ -122,8 +110,15 @@ namespace Binary_Search_Tree
             Console.WriteLine(p.num);
             inOrder(p.right);
         }
+        public void inOrderPrimes(Node p) //Method reading prime numbers
+        {
+            if (p == null) return;
+            inOrderPrimes(p.left);
+            if (isPrime(p.num)) { Console.WriteLine(p.num); }
+            inOrderPrimes(p.right);
+        }
 
-        static Boolean isPrime(int num) //Method for calculating a prime
+        public static Boolean isPrime(int num) //Method for calculating a prime
         {
             Boolean record = true;
             for (int i = 2; i <= Math.Sqrt(num); i++)
@@ -141,18 +136,7 @@ namespace Binary_Search_Tree
             return (record);
 
         }
-        static void PrintPrime(int[] arr) //method for displaying prime number
-        {
-            for (int i = 0; i < arr.Length; i++)
-            {
-                if (isPrime(arr[i]))
-                {
-                    Console.WriteLine("\t{0}", arr[i]);
-                }
-            }
-
-        }
+   
     }
-}
 }
 
