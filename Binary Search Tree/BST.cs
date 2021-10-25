@@ -43,7 +43,55 @@ namespace Binary_Search_Tree
             }
             return root;
         }
+        public virtual void printLevelOrder()
+        {
+            int h = height(root);
+            int i;
+            for (i = 1; i <= h; i++)
+            {
+                printCurrentLevel(root, i);
+            }
+        }
 
+        public virtual int height(Node root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            else
+            {
+                int lheight = height(root.left);
+                int rheight = height(root.right);
+
+                if (lheight > rheight)
+                {
+                    return (lheight + 1);
+                }
+                else
+                {
+                    return (rheight + 1);
+                }
+            }
+        }
+
+        public virtual void printCurrentLevel(Node root,
+                                          int level)
+        {
+            if (root == null)
+            {
+                return;
+            }
+            if (level == 1)
+            {
+                Console.Write(root.num + " ");
+            }
+            else if (level > 1)
+            {
+                printCurrentLevel(root.left, level - 1);
+                printCurrentLevel(root.right, level - 1);
+            }
+        }
         public Node search(int num) //Search the binary search tree
         {
             Node p = root;
@@ -64,19 +112,14 @@ namespace Binary_Search_Tree
             }
             int left = findHeight(p.left);
             int right = findHeight(p.right);
-            int current = Math.Max(left, right) + 1;
-            Console.WriteLine(current + " : " + p.num);
-            return current;
+            return Math.Max(left, right) + 1;
         }
 
         public void inOrder(Node p) //Method for reading the binary search tree in order 
         {
-            if (p == null) 
-                return;
+            if (p == null) return;
             inOrder(p.left);
-            if (isPrime(p.num))
-                Console.WriteLine(p.num);
-
+            Console.WriteLine(p.num);
             inOrder(p.right);
         }
 
@@ -91,12 +134,25 @@ namespace Binary_Search_Tree
                     break;
                 }
             }
-            if (num == 1)
+            if (num == 0 || num == 1)
             {
                 record = false;
             }
             return (record);
 
         }
+        static void PrintPrime(int[] arr) //method for displaying prime number
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (isPrime(arr[i]))
+                {
+                    Console.WriteLine("\t{0}", arr[i]);
+                }
+            }
+
+        }
     }
 }
+}
+

@@ -8,12 +8,14 @@ namespace Binary_Search_Tree
 {
     class Node
     {
+        //public int data;
         public Node right;
         public Node left;
         public int num;
 
-        public Node(int num)
+        public Node(int num) //Constructor
         {
+            //data = num;
             this.num = num;
             left = null;
             right = null;
